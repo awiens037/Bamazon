@@ -13,6 +13,7 @@ var connection = mysql.createConnection({
     database: "bamazon_db"
 });
 
+// Test Connection
 connection.connect(function(err) {
     if (err) throw err;
     console.log("connected as id " + connection.threadId + "\n");
@@ -24,11 +25,11 @@ function initializeBamazon() {
     inquirer
         .prompt([{
             type: "input",
-            message: "What is the ID you would like to buy?",
+            message: "What is the ID of the item you would like to buy?",
             name: "id"
         }, {
             type: "input",
-            message: "How many units would you like to buy?",
+            message: "How many units of this item would you like to buy?",
             name: "quantity"
         }, ])
 
@@ -38,7 +39,7 @@ function initializeBamazon() {
             readProducts(item, units);
         });
 }
-
+// Reads product, determines if insufficient quantity
 function readProducts(id, units) {
 
     connection.query("SELECT * FROM products", function (err, res) {
@@ -46,13 +47,13 @@ function readProducts(id, units) {
         id--;
 
         if (units > res[id].stock_quantity) {
-            console.log("Insuffient Quantity :(");
+            console.log("Insuffient Quantity, please try again");
         } else {
             var expense = res[id].price * units;
             units = res[id].stock_quantity - units;
 
             updateProduct(id, units);
-            console.log("Total expense is: " + expense);
+            console.log("Total cost is: " + expense);
         }
 
         connection.end();
@@ -60,6 +61,7 @@ function readProducts(id, units) {
 
 }
 
+// Updates product
 function updateProduct(id, units) {
     console.log("Updating store inventory...\n");
     id++;
