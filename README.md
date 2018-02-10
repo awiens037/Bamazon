@@ -17,3 +17,5 @@
 <img width="542" alt="screen shot 2018-02-10 at 7 55 54 am" src="https://user-images.githubusercontent.com/30426278/36063919-ff8c7434-0e37-11e8-8a51-5c369fe16f71.png">
 
 *This screen shot is a photo of the database table 'Products' after purchases made*
+
+<img width="542" alt="screen shot 2018-02-10 at 7 56 16 am" src="https://user-images.githubusercontent.com/30426278/36063924-2a5fa29e-0e38-11e8-84f9-0ae7ef467596.png">
